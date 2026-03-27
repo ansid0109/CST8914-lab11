@@ -12,6 +12,7 @@
 const accordionBtns = document.querySelectorAll(".accordion");
 
 accordionBtns.forEach((accordion) => {
+
   accordion.onclick = function () {
     this.classList.toggle("is-open");
 
@@ -21,10 +22,14 @@ accordionBtns.forEach((accordion) => {
     if (content.style.maxHeight) {
       //this is if the accordion is open
       content.style.maxHeight = null;
+
+      accordion.setAttribute('aria-expanded', false);
     } else {
       //if the accordion is currently closed
       content.style.maxHeight = content.scrollHeight + "px";
       console.log(content.style.maxHeight);
+
+      accordion.setAttribute('aria-expanded', true);
     }
   };
 });
